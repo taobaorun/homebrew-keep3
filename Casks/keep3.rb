@@ -2,7 +2,7 @@ cask "keep3" do
   version "1.0.0"
   sha256 "f45e48261f9166c3f10102b38247fc7531090d5b5083f83f1bc0bdb4ddad9cef"
 
-  url "https://github.com/taobaorun/keep3/releases/download/v1.0.0/Keep3-1.0.0.dmg"
+  url "https://github.com/taobaorun/keep3/releases/download/v#{version}/Keep3-#{version}.dmg"
   name "Keep3"
   desc "Keep three priorities visible in the MacBook notch"
   homepage "https://github.com/taobaorun/keep3"
