@@ -1,0 +1,41 @@
+name: Cask validation
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cask-validation-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  validate:
+    name: cask validation
+    runs-on: macos-15
+    timeout-minutes: 20
+    permissions:
+      actions: read
+      checks: read
+      contents: read
+      pull-requests: read
+    steps:
+      - name: Set up Homebrew
+        id: set-up-homebrew
+        uses: Homebrew/actions/setup-homebrew@9af03b7ae3f9e2ae5c174f659d5c3909f7e7dbac # 2026.07.29.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Clean the runner before validation
+        run: brew test-bot --only-cleanup-before
+
+      - name: Verify the Homebrew test environment
+        run: brew test-bot --only-setup
+
+      - name: Validate tap and Cask syntax
+        run: brew test-bot --only-tap-syntax
