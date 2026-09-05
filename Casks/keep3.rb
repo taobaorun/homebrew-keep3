@@ -1,6 +1,6 @@
 cask "keep3" do
-  version "1.0.4"
-  sha256 "a2fbd06730972696917889dfec5c2b67908c267b2657d4bc73320d2a6ed319a6"
+  version "1.0.5"
+  sha256 "6ed1d487f0979f1413cc9c028ac64eb1561324904a99f7c78879eb51e4a439bb"
 
   url "https://github.com/taobaorun/keep3/releases/download/v#{version}/Keep3-#{version}.dmg"
   name "Keep3"
